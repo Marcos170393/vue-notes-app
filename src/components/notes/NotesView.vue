@@ -26,8 +26,8 @@
                 <tbody class=" ">
                     <tr v-for="(note,index) in notes" :key="note.title" class="hover:bg-slate-800">
                         <td>
-                            <img v-if="note.hold == 1"  @click="updateHoldNote(note.id, !note.hold)" src="../../resources/pin-selected.svg" class="size-5 cursor-pointer" alt="">
-                            <img v-else @click="updateHoldNote(note.id, !note.hold)"  src="../../resources/pin-unselected.svg" class="size-5 cursor-pointer opacity-0 hover:opacity-80 transition-opacity" alt="">
+                            <img v-if="note.hold == 1"  @click="updateHoldNote(note.id, !note.hold)" src="../../resources/pin-selected.svg" class="size-6 cursor-pointer" alt="" title="No fijar">
+                            <img v-else @click="updateHoldNote(note.id, !note.hold)"  src="../../resources/pin-unselected.svg" class="size-5 cursor-pointer opacity-0 hover:opacity-80 transition-opacity" alt="" title="Fijar">
 
                         </td>
                         <td class="w-8/12">
