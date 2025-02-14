@@ -3,7 +3,7 @@
     <ToastMessageCompontent/>
     <NavComponent/>
     
-    <main class="col-span-9 h-full p-4">
+    <main class="col-span-10 h-full p-4">
       <router-view v-slot="{ Component }">
         <transition name="fade">
           <component :is="Component" />

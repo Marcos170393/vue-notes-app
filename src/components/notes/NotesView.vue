@@ -12,9 +12,8 @@
         <div v-if="notes.length == 0">
             <p class="text-slate-400 text-lg">Wooow cuanto vacío...🍃</p>
         </div>
-        <div v-else  class="my-4 px-2 py-20 w-full max-h-80 overflow-scroll overflow-x-hidden">
-            <p class="text-slate-400 pb-3 text-xl">Recientes</p>
-            <table class="w-full " >
+        <div v-else  class="my-4 px-2 py-10 w-full max-h-90 overflow-scroll overflow-x-hidden bg-slate-900 rounded-2xl shadow-inner shadow-slate-950">
+            <table class="w-full table table-auto tabl" >
                 <thead>
                     <tr>
                         <th></th>
@@ -31,7 +30,7 @@
 
                         </td>
                         <td class="w-8/12">
-                            <button @click="openNote(note.id)" class="text-slate-500 font-semibold hover:text-slate-200">{{ note.title }}</button>
+                            <button @click="openNote(note.id)" class="text-slate-500 font-semibold hover:text-slate-200 cursor-pointer">{{ note.title }}</button>
                         </td>
                         <td>
                             <p class="text-slate-600 mr-2">{{note.updated_at}}</p>
