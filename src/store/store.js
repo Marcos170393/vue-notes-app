@@ -7,19 +7,24 @@ export const globalState = defineStore('config',{
                 text: '',
                 type: '',
                 show: false,
+            },
+            user:{
+                name: '',
+                password: ''
             }
     }),
     getters: {
-        getFolderLocation(state){
-            return state.folderLocation;
+        getUserLogin(state){
+            return state.user;
         },
         getToastMessageContent(state){
             return state.toastMessage;
         }
     },
     actions: {
-        setLocation(path){
-            this.folderLocation = path;
+        setUserLogin(user){
+            this.user.name = user.name;
+            this.user.password = user.password; 
         },
         showMessage(message,type){
             this.toastMessage.text = message;

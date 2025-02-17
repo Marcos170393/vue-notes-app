@@ -57,17 +57,6 @@ export const updateNoteHoldState = async (id,hold) => {
     return response;
 }
 
-export const setLocationAction = async () => {
-    try{
-        const path = await setFolderLocation();
-        const store = globalState();
-        console.log(`FROM ACTION ${path}`)
-        store.setLocation(path)
-    }catch(error){
-        throw Error(error);
-    }
-}
-
 export const deleteNoteAction = async(id) => {
     const response = await deleteNote(id);
     if(response.status == 200){
