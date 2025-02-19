@@ -3,9 +3,6 @@
       "target": "ESNext",           // Usa la última versión de ECMAScript
       "module": "ESNext",           // Usa módulos ES
       "baseUrl": ".",               // Define la ruta base para las importaciones
-      "paths": {
-        "@/*": ["./src/*"]          // Permite importaciones con alias @ (por ejemplo, @/components/MyComponent.vue)
-      },
       "moduleResolution": "Node",   // Usa la resolución de módulos de Node.js
       "allowJs": true,              // Permite la importación de archivos JavaScript
       "esModuleInterop": true,      // Permite la interoperabilidad entre módulos CommonJS y ES
@@ -15,4 +12,4 @@
     },
     "include": ["src/**/*"],        // Incluye todos los archivos en la carpeta src
     "exclude": ["node_modules"]     // Excluye la carpeta node_modules
-  }
+}
