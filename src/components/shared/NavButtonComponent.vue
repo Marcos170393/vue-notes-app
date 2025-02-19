@@ -13,6 +13,6 @@
     const props = defineProps(['route'])
     const link = props.route;
     import { useRoute } from 'vue-router';
-    const router  =useRoute();
+    const router = useRoute();
     
 </script>

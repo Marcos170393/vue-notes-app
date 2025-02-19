@@ -3,31 +3,33 @@ export default class Auth {
 
   constructor() {
     this.sql = neon(import.meta.env.VITE_DATABASE_URL);
-    this.crypt = require('crypto');
   }
 
-  async hashPassword(pass){
-    const hash = this.crypt.createHash('sha256');
-    hash.update(pass);
-    return hash.digest('hex');
-  }
 
   async login(document,pass) {
     try{
-      const hashedPass = await this.hashPassword(pass);
-      const result = await this.sql(`select * from users where document = $1 and password = $2;`, [document,hashedPass]);
+      const result = await this.sql(`select * from users where document = $1 and password = $2;`, [document,pass]);
       return result[0];
     }catch(err){
-      throw err;
+      console.log(`Error during login: ${err.message}`);
+      return {
+        error: {
+          message:'Error al obtener datos.'
+        }
+      }
     }
   }
-  async signUp(document,pass) {
+  async signUp(username,pass) {
     try{
-      const hashedPass = await this.hashPassword(pass);
-      const result = await this.sql(`insert into users (document,password) values ($1,$2) RETURNING *;`, [document,hashedPass]);
-      return result[0];
+      const result = await this.sql(`insert into users (username,password) values ($1,$2);`, [username,pass]);
+      return result;
     }catch(err){
-      throw err;
+      console.log(`Error during signUp: ${err}`);
+      return {
+        error: {
+          message:'Error al guardar datos'
+        }
+      }
     }
   }
 }
