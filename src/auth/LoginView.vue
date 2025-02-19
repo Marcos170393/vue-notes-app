@@ -62,11 +62,7 @@ const password = ref('');
 
 async function login() {
   const response = await auth.login(username.value,password.value);
-  if(response.error){
-    globalState().showMessage(response.error.message,'error');
-    return false;
-  }
-  globalState().showMessage('Bienvenido!!','create');
+  
 } 
 </script>
 

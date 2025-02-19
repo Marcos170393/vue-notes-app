@@ -12,5 +12,5 @@ export default defineConfig({
     vue(),
     tailwindcss(),
   ],
-  base: process.env.NODE_ENV === 'production' ? '/REPO_NAME/' : '/'
+  base: process.env.NODE_ENV === 'development' ? '/' : '/vue-notes-app/'
 })

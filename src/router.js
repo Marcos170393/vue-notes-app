@@ -56,7 +56,7 @@ export const router = createRouter({
 router.beforeEach(async (to, from) => {
     if (to.meta.requiresAuth) {
         // Esta ruta requiere autenticación, verifica si el usuario está autenticado
-        if (globalState().getUserLogin.name == '') {
+        if (!localStorage.getItem('username')) {
           // Usuario no autenticado, redirige a login
            return { name: 'Login' }
         } 

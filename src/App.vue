@@ -1,7 +1,7 @@
 <template>
   <div class="grid grid-cols-12 h-svh text-gray-300 font-sans font-thin relative">
     <ToastMessageCompontent/>
-    <div v-if="!$route.path.includes('login') && !$route.path.includes('signup')">
+    <template v-if="!$route.path.includes('login') && !$route.path.includes('signup')">
       <NavComponent/>
       <main class="col-span-10 h-full p-4">
         <router-view v-slot="{ Component }">
@@ -10,8 +10,8 @@
           </transition>
         </router-view>
       </main>
-    </div>
-    <main class="col-span-12 h-full">
+    </template>
+    <main v-else class="col-span-12 h-full">
       <router-view v-slot="{ Component }">
         <transition name="fade">
           <component :is="Component" />

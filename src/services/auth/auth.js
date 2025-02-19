@@ -1,4 +1,6 @@
 import { neon } from '@neondatabase/serverless';
+import { globalState } from '../../store/store';
+import { router } from '../../router';
 export default class Auth {
 
   constructor() {
@@ -9,14 +11,13 @@ export default class Auth {
   async login(username,pass) {
     try{
       const result = await this.sql(`select * from users where username = $1 and password = $2;`, [username,pass]);
-      if(!result[0]){
-        return {
-          error: {
-            message:'Usuario o contrasena incorrecta'
-          }
-        }
+      if(result[0] == undefined){
+        globalState().showMessage('Username or Password incorrect','error');
+        return false;
       }
-      return result[0];
+      globalState().showMessage(`Hi ${result[0].username} !!`,'create');
+      localStorage.setItem('username',result[0].username);
+      router.push('/');
     }catch(err){
       console.log(`Error during login: ${err.message}`);
       return {

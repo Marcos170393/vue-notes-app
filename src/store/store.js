@@ -10,7 +10,6 @@ export const globalState = defineStore('config',{
             },
             user:{
                 name: '',
-                password: ''
             }
     }),
     getters: {
@@ -24,7 +23,6 @@ export const globalState = defineStore('config',{
     actions: {
         setUserLogin(user){
             this.user.name = user.name;
-            this.user.password = user.password; 
         },
         showMessage(message,type){
             this.toastMessage.text = message;
