@@ -75,6 +75,9 @@
 import { ref, reactive } from "vue";
 import Auth from "../services/auth/auth";
 import { globalState } from "../store/store";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 
 const data = reactive({
   password: {
@@ -97,5 +100,7 @@ const onSubmit = async (e) => {
   if (response.error) {
     globalState().showMessage('Error al guardar datos','error');
   }
+  globalState().showMessage('Usuario creado con exito','create');
+  router.push('/login');
 };
 </script>
