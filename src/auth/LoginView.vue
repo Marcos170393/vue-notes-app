@@ -12,8 +12,8 @@
         <form @submit.prevent="login" class="mt-8 space-y-6">
           <div class="rounded-md shadow-sm">
             <div>
-              <label for="email-address" class="sr-only">Email address</label>
-              <input v-model="email" id="email-address" type="email" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-600 placeholder-gray-400 text-white rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email address">
+              <label for="username" class="sr-only">Username</label>
+              <input v-model="username" id="username" type="email" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-600 placeholder-gray-400 text-white rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email address">
             </div>
             <div class="mt-6">
               <label for="password" class="sr-only">Password</label>
@@ -54,10 +54,7 @@ import { onMounted, ref } from 'vue'
 import { useRouter, RouterLink } from 'vue-router'
 
 const router = useRouter()
-onMounted(() => {
-  console.log('Component mounted')
-})
-const email = ref('');
+const username = ref('');
 const password = ref('');
 
 /*************  ✨ Codeium Command ⭐  *************/
@@ -76,7 +73,7 @@ const password = ref('');
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      email: email.value,
+      email: username.value,
       password: password.value
     })
   })
