@@ -6,12 +6,15 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   build: {
     rollupOptions:{
-      external: 'vue',
+      external: ['vue'],
       output: {
+        assetFileNames: 'assets/[name]-[hash][extname]',
+        entryFileNames: 'assets/[name]-[hash].js',
+        chunkFileNames: 'assets/[name]-[hash].js',
         // Provide global variables to use in the UMD build
         // for externalized deps
         globals: {
-          vue: 'Vue'
+          vue: 'vue'
         }
       }
     }
@@ -24,5 +27,5 @@ export default defineConfig({
     vue(),
     tailwindcss(),
   ],
-  base: process.env.NODE_ENV === 'development' ? '/' : '/vue-notes-app/'
+  base: process.env.NODE_ENV === 'production' ? '/vue-notes-app/' : '/'
 })
