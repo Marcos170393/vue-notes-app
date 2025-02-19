@@ -6,9 +6,16 @@ export default class Auth {
   }
 
 
-  async login(document,pass) {
+  async login(username,pass) {
     try{
-      const result = await this.sql(`select * from users where document = $1 and password = $2;`, [document,pass]);
+      const result = await this.sql(`select * from users where username = $1 and password = $2;`, [username,pass]);
+      if(!result[0]){
+        return {
+          error: {
+            message:'Usuario o contrasena incorrecta'
+          }
+        }
+      }
       return result[0];
     }catch(err){
       console.log(`Error during login: ${err.message}`);

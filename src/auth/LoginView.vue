@@ -13,7 +13,7 @@
           <div class="rounded-md shadow-sm">
             <div>
               <label for="username" class="sr-only">Username</label>
-              <input v-model="username" id="username" type="email" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-600 placeholder-gray-400 text-white rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email address">
+              <input v-model="username" id="username" type="text" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-600 placeholder-gray-400 text-white rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Username account">
             </div>
             <div class="mt-6">
               <label for="password" class="sr-only">Password</label>
@@ -52,40 +52,21 @@
 <script setup>
 import { onMounted, ref } from 'vue'
 import { useRouter, RouterLink } from 'vue-router'
+import Auth from '../services/auth/auth';
+import { globalState } from '../store/store';
 
+const auth = new Auth();
 const router = useRouter()
 const username = ref('');
 const password = ref('');
 
-/*************  ✨ Codeium Command ⭐  *************/
-  /**
-   * Makes a POST request to the /api/login endpoint
-   * with the email and password values from the form.
-   * If the response is successful, stores the token
-   * in local storage and redirects the user to the
-   * home page. If the response is not successful,
-   * displays an alert with the error message.
-
-/******  df0aa00e-1724-4a95-85da-92692605fd47  *******/async function login() {
-  const response = await fetch('/api/login', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      email: username.value,
-      password: password.value
-    })
-  })
-
-  const data = await response.json()
-
-  if (data.success) {
-    localStorage.setItem('token', data.token)
-    router.push('/')
-  } else {
-    alert(data.message)
+async function login() {
+  const response = await auth.login(username.value,password.value);
+  if(response.error){
+    globalState().showMessage(response.error.message,'error');
+    return false;
   }
-}
+  globalState().showMessage('Bienvenido!!','create');
+} 
 </script>
 
