@@ -1,6 +1,11 @@
 <template>
-      <HeaderComponent>My notes</HeaderComponent>
+      <HeaderComponent>My notes <PaperClipIcon class="size-6 inline-block"/></HeaderComponent>
+      <div class="absolute left-1/2 top-10 transform -translate-x-1/2 translate-y-1/2 opacity-10 duration-700 "
+      :class="{'opacity-55 duration-200 -rotate-x-12 transform -rotate-z-6': localState.showLogo}">
+        <img src="../../resources/paper.png" alt="">
+      </div>
     <div >
+        
         <InputDialogComponent :show=localState.showInput  @hidde="handleHide"/>
         <InputDialogRenameComponent :show=localState.showRename.show :id="localState.showRename.id"  @hidde="handleHideRename" @renamed="updateList()"/>
         <ConfirmDialogComponent :name="localState.delete.name" :show="localState.delete.showDialog" @hidde="toggleHiddeConfirm(false)" @delete="deleteNote(localState.delete.id)"/>
@@ -11,13 +16,10 @@
             <p> <span class="border-b border-slate-700 rounded-md px-2">Total: {{ notes.length }}</span></p>
             <span class="mx-2"></span>
             <button @click="createNote()" title="Create new note">
-                <PlusCircleIcon class="size-5 mx-1  rounded animate-pulse hover:animate-none text-slate-50 hover:text-slate-400 transition-all"/>
+                <PlusCircleIcon class="size-5 mx-1 cursor-pointer rounded animate-pulse hover:animate-none text-slate-50 hover:text-slate-400 transition-all"/>
             </button>
         </div>
-        <div v-if="notes.length == 0">
-            <p class="text-slate-400 text-lg">Wooow cuanto vacío...🍃</p>
-        </div>
-        <div v-else  class="my-4 px-2 py-10 w-full max-h-100 min-h-90 overflow-scroll overflow-x-hidden">
+        <div  class="my-4 px-2 py-10 w-full max-h-100 min-h-90 overflow-scroll overflow-x-hidden">
             <table class="w-full table table-auto tabl" >
                 <thead>
                     <tr>
@@ -59,7 +61,7 @@
     import { globalState } from '../../store/store';
     import { loadNotesAction, updateNoteHoldState, deleteNoteAction } from '../../utils/files-actions';
     import { onBeforeMount, onMounted, reactive, ref } from 'vue';
-    import { PlusCircleIcon } from '@heroicons/vue/16/solid';
+    import { PlusCircleIcon,PaperClipIcon } from '@heroicons/vue/16/solid';
     import { router } from '../../router';
     import ConfirmDialogComponent from '../shared/ConfirmDeleteDialogComponent.vue';
     import DropDownComponent from '../shared/DropDownComponent.vue';
@@ -70,6 +72,7 @@
 
      const localState = reactive({
         showInput: false,
+        showLogo: true,
         showRename: {
             show: false,
             id: null
@@ -101,6 +104,7 @@
     
     onMounted(async ()=>{
         getAllNotes();
+        showlogo();
     })
 
     async function getAllNotes(){
@@ -157,5 +161,23 @@
     function successDelete(){
         emit('deleted');
     }
+
+    async function showlogo(){
+        setTimeout(()=>{
+            localState.showLogo = false;
+        },0);
+    }
     
 </script>
+
+<style>
+#notesContainer {
+    background-image: url('../../../public/paper.png'); /* replace with your image path */
+    opacity: 0.5;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-blend-mode: multiply;
+}
+
+
+</style>
