@@ -5,19 +5,7 @@ import tailwindcss from '@tailwindcss/vite'
 // https://vite.dev/config/
 export default defineConfig({
   build: {
-    rollupOptions:{
-      external: ['vue'],
-      output: {
-        assetFileNames: 'assets/[name]-[hash][extname]',
-        entryFileNames: 'assets/[name]-[hash].js',
-        chunkFileNames: 'assets/[name]-[hash].js',
-        // Provide global variables to use in the UMD build
-        // for externalized deps
-        globals: {
-          vue: 'vue'
-        }
-      }
-    }
+   
   },
   server: {
     host: '0.0.0.0',
