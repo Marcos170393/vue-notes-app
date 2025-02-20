@@ -17,9 +17,9 @@ export const createNoteAction = async (name) => {
     try{
         const response = await createNote(name);
         if(response.id){
-            globalState().showMessage('Que fluyan las ideas!!','create');
+            globalState().showMessage("Let's go!",'success');
         }else{
-            globalState().showMessage('mmm.. algo salio mal...','error');
+            globalState().showMessage('mmm.. something went wrong...','danger');
         };
         
         return response;
@@ -33,18 +33,18 @@ export const createNoteAction = async (name) => {
 export const updateNoteAction = async(id,data) => {
     const response = await editNote(id,data);
     if(response.status == 200){
-        globalState().showMessage('Todo guardado!!','update');
+        globalState().showMessage('Ready!','success');
     }else{
-        globalState().showMessage('Error al actualizar nota','error');
+        globalState().showMessage('mmm.. something went wrong...','danger');
     };
     return response;
 }
 export const updateNoteTitleAction = async(id,title) => {
     const response = await editTitle(id,title);
     if(response.status == 200){
-        globalState().showMessage('Todo guardado!!','update');
+        globalState().showMessage('Ready!','success');
     }else{
-        globalState().showMessage('Error al actualizar nota','error');
+        globalState().showMessage('mmm.. something went wrong...','danger');
     };
     return response;
 }
@@ -52,7 +52,7 @@ export const updateNoteTitleAction = async(id,title) => {
 export const updateNoteHoldState = async (id,hold) => {
     const response = await updateHold(id,hold);
     if(response.status != 200){
-        globalState().showMessage('Error al actualizar nota','error');
+        globalState().showMessage('mmm.. something went wrong...','danger');
     }
     return response;
 }
@@ -60,9 +60,9 @@ export const updateNoteHoldState = async (id,hold) => {
 export const deleteNoteAction = async(id) => {
     const response = await deleteNote(id);
     if(response.status == 200){
-        globalState().showMessage('Ya no sera un problema...','delete');
+        globalState().showMessage("It's done!",'success');
     }else{
-        globalState().showMessage('Error al eliminar nota','error');
+        globalState().showMessage('mmm.. something went wrong...','danger');
     }
     return response;
 

@@ -1,6 +1,6 @@
 <template >
     <div class="relative" ref="menuWrapper">
-        <button @click="toggleHiddeSelf(true)" title="Opciones">
+        <button @click="toggleHiddeSelf(true)" title="options">
             <EllipsisVerticalIcon v-if="hidde" class="size-5 cursor-pointer" />
             <EllipsisHorizontalCircleIcon v-else="!hidde" class="size-5 cursor-pointer" />
 

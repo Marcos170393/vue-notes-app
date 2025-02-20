@@ -1,18 +1,21 @@
 <template>
-    <div id="toast" class="absolute z-10 flex flex-row p-3 items-center border-black bg-slate-600 opacity-0 max-w-80 h-11 right-4 rounded-lg -translate-y-4 duration-500"
-        :class="{
-            'transition-all translate-y-4 duration-500 opacity-90 shadow-slate-600 shadow-lg border border-slate-500': data.showMessage
-        }"
-    >
-    <div>
-        <p v-if="data.type == 'create'" class="text-green-700 inline-block text-lg mr-4"> 😊 </p>
-        <p v-if="data.type == 'update'" class="text-green-700 inline-block text-lg mr-4"> 😏 </p>
-        <p v-if="data.type == 'delete'" class="text-green-700 inline-block text-lg mr-4"> 😈 </p>
-        <p v-if="data.type == 'error'" class="text-red-700 inline-block text-lg mr-4"> 😔 </p>
-    </div>
-    <p class="text-slate-200 font-semibold">
-        {{ data.messageToast }}
-    </p>
+        <div id="toast" class="absolute z-10 flex justify-center rounded-md items-center  py-2 slate-600 opacity-0 min-w-60 max-w-100 h-11 right-4 -translate-y-4 duration-150"
+            :class="{
+                'transition-all translate-y-4 duration-150 opacity-90 shadow-lg border-slate-500': data.showMessage,
+                ' shadow-purple-950': data.type == 'success',
+                ' shadow-red-900': data.type == 'danger',
+            }"
+        >
+        <div>
+
+            <p class="text-slate-100 font-semibold mx-4">
+                {{ data.messageToast }}
+            </p>
+        </div>
+        <div >
+            <p v-if="data.type == 'success'" class="text-blue-700 text-2xl mr-4"> 😎 </p>
+            <p v-if="data.type == 'danger'" class=" text-2xl mr-4"> 😔 </p>
+        </div>
     </div>
 </template>
 <script setup>

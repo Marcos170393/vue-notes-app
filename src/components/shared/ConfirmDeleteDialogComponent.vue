@@ -3,7 +3,7 @@
         :class="{
             'transition-all translate-y-0 duration-700 opacity-100': props.show
         }">
-        <h2 class="mb-2 font-semibold text-center">Seguro deseas eliminar <b>{{props.name}}</b>?</h2>
+        <h2 class="mb-2 font-semibold text-center">Are you sure to delete <b>{{props.name}}</b>?</h2>
         <div  class="flex flex-row justify-center">
             <button @click="deleteNote()"><CheckIcon class="size-6 mr-4 hover:text-slate-400 transition-colors"/></button>
             <button @click="hidde()"><XCircleIcon class="size-6 text-red-400 hover:text-red-600 transition-colors"/></button>

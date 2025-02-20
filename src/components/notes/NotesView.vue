@@ -7,9 +7,10 @@
         <div class="flex flex-row justify-end items-baselinem mt-5">
         </div>
         <div class="flex flex-row justify-end my-3">
+            <input type="text" class="">
             <p> <span class="border-b border-slate-700 rounded-md px-2">Total: {{ notes.length }}</span></p>
             <span class="mx-2"></span>
-            <button @click="createNote()" title="Crear nueva nota">
+            <button @click="createNote()" title="Create new note">
                 <PlusCircleIcon class="size-5 mx-1  rounded animate-pulse hover:animate-none text-slate-50 hover:text-slate-400 transition-all"/>
             </button>
         </div>
@@ -29,8 +30,8 @@
                 <tbody class=" ">
                     <tr v-for="(note,index) in notes" :key="note.title" class="hover:bg-slate-900 ">
                         <td>
-                            <img v-if="note.hold == 1"  @click="updateHoldNote(note.id, !note.hold)" src="../../resources/pin-selected.svg" class="size-6 cursor-pointer" alt="" title="No fijar">
-                            <img v-else @click="updateHoldNote(note.id, !note.hold)"  src="../../resources/pin-unselected.svg" class="size-5 cursor-pointer opacity-0 hover:opacity-80 transition-opacity" alt="" title="Fijar">
+                            <img v-if="note.hold == 1"  @click="updateHoldNote(note.id, !note.hold)" src="../../resources/pin-selected.svg" class="size-6 cursor-pointer" alt="" title="Unhold">
+                            <img v-else @click="updateHoldNote(note.id, !note.hold)"  src="../../resources/pin-unselected.svg" class="size-5 cursor-pointer opacity-0 hover:opacity-80 transition-opacity" alt="" title="Hold">
 
                         </td>
                         <td class="w-8/12 cursor-pointer" @click="openNote(note.id)" >
@@ -60,7 +61,7 @@
     import { onBeforeMount, onMounted, reactive, ref } from 'vue';
     import { PlusCircleIcon } from '@heroicons/vue/16/solid';
     import { router } from '../../router';
-    import ConfirmDialogComponent from '../shared/ConfirmDialogComponent.vue';
+    import ConfirmDialogComponent from '../shared/ConfirmDeleteDialogComponent.vue';
     import DropDownComponent from '../shared/DropDownComponent.vue';
     import InputDialogComponent from '../shared/InputDialogComponent.vue';
     import InputDialogRenameComponent from '../shared/InputDialogRenameComponent.vue';

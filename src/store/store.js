@@ -38,9 +38,9 @@ export const globalState = defineStore('config',{
             this.toastMessage.type = type;
             this.toastMessage.show = true;
             setTimeout(()=>{
+                this.toastMessage.show = false;
                 this.toastMessage.text = '';
                 this.toastMessage.type = '';
-                this.toastMessage.show = false;
             },3000)
             
         },
