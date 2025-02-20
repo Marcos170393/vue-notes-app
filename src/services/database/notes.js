@@ -8,7 +8,7 @@ export default class Notes {
 
   async loadAllNotes() {
     try{
-      const result = await this.sql(`select id,title,hold,TO_CHAR(updated_at, 'YYYY/MM/DD HH:mm:ss') AS updated_at from notes order by hold DESC, updated_at ASC;`);
+      const result = await this.sql(`select id,title,hold,TO_CHAR(updated_at, 'YYYY/MM/DD HH:mm:ss') AS updated_at from notes order by hold DESC, updated_at DESC;`);
       return result;
     }catch(err){
       throw err;
