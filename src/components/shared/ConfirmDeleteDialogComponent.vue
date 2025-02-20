@@ -1,5 +1,5 @@
 <template> 
-    <div ref="menuWrapper" class="absolute z-50 w-1/5 left-1/2 transition-all opacity-0 -translate-y-20 duration-700 bg-slate-600 p-2 rounded-md" 
+    <div ref="menuWrapper" class="absolute min-w-1/5 left-1/2 top-10 transform -translate-x-1/2 -translate-y-10 transition-all opacity-0 duration-700 bg-slate-600 p-2 rounded-md" 
         :class="{
             'transition-all translate-y-0 duration-700 opacity-100': props.show
         }">
