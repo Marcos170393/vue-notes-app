@@ -1,4 +1,5 @@
 <template>
+      <HeaderComponent>My notes</HeaderComponent>
     <div >
         <InputDialogComponent :show=localState.showInput  @hidde="handleHide"/>
         <InputDialogRenameComponent :show=localState.showRename.show :id="localState.showRename.id"  @hidde="handleHideRename" @renamed="updateList()"/>
@@ -50,15 +51,16 @@
     </div>
 </template>
 <script setup>
-    import { PlusCircleIcon } from '@heroicons/vue/16/solid';
-    import InputDialogComponent from '../shared/InputDialogComponent.vue';
-    import DropDownComponent from '../shared/DropDownComponent.vue';
-    import ConfirmDialogComponent from '../shared/ConfirmDialogComponent.vue';
-    import { loadNotesAction, updateNoteHoldState, deleteNoteAction } from '../../utils/files-actions';
-    import { router } from '../../router';
-    import { onBeforeMount, onMounted, reactive, ref } from 'vue';
     import { globalState } from '../../store/store';
+    import { loadNotesAction, updateNoteHoldState, deleteNoteAction } from '../../utils/files-actions';
+    import { onBeforeMount, onMounted, reactive, ref } from 'vue';
+    import { PlusCircleIcon } from '@heroicons/vue/16/solid';
+    import { router } from '../../router';
+    import ConfirmDialogComponent from '../shared/ConfirmDialogComponent.vue';
+    import DropDownComponent from '../shared/DropDownComponent.vue';
+    import InputDialogComponent from '../shared/InputDialogComponent.vue';
     import InputDialogRenameComponent from '../shared/InputDialogRenameComponent.vue';
+    import HeaderComponent from '../shared/HeaderComponent.vue';
     const emit = defineEmits();
 
      const localState = reactive({

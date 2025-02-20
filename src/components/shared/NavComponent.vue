@@ -1,5 +1,5 @@
 <template>
-    <div class="col-span-2 h-full w-full flex flex-col border-r border-gray-500 relative">
+    <div class="col-span-2 h-full w-full flex flex-col shadow-md shadow-slate-800 relative">
         <div class="flex flex-row mb-6 items-end border-b rounded-md border-slate-800 shadow-lg p-4 shadow-slate-600 mx-auto">
             <h5 class="font-sans text-xl antialiased font-semibold text-blue-gray-900">
                 MemoWave

@@ -1,19 +1,14 @@
-import { HomeIcon, InformationCircleIcon } from "@heroicons/vue/16/solid";
+import { PaperClipIcon } from "@heroicons/vue/16/solid";
 
 export const links = [
     {
-        title: 'Mis notas',
+        title: 'Notes',
         name: 'notes',
         route: '/'
     },
     {
-        title: 'Ajustes',
+        title: 'Settings',
         name: 'setup',
         route: '/setup'
-    },
-    {
-        title: 'Info',
-        name: 'about',
-        route: '/about'
-    },
+    }
 ]
