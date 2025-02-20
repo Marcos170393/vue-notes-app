@@ -1,7 +1,7 @@
 <template>
-    <div id="toast" class="absolute z-10 flex flex-row p-3 items-center border-black bg-slate-600 opacity-0 w-72 h-11 right-4 rounded-lg -translate-y-4 duration-500"
+    <div id="toast" class="absolute z-10 flex flex-row p-3 items-center border-black bg-slate-600 opacity-0 max-w-80 h-11 right-4 rounded-lg -translate-y-4 duration-500"
         :class="{
-            'transition-all translate-y-4 duration-500 opacity-90 shadow-slate-500 shadow-lg border border-slate-500': data.showMessage
+            'transition-all translate-y-4 duration-500 opacity-90 shadow-slate-600 shadow-lg border border-slate-500': data.showMessage
         }"
     >
     <div>

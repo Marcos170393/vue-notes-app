@@ -3,16 +3,15 @@
         <InputDialogComponent :show=localState.showInput  @hidde="handleHide"/>
         <InputDialogRenameComponent :show=localState.showRename.show :id="localState.showRename.id"  @hidde="handleHideRename" @renamed="updateList()"/>
         <ConfirmDialogComponent :name="localState.delete.name" :show="localState.delete.showDialog" @hidde="toggleHiddeConfirm(false)" @delete="deleteNote(localState.delete.id)"/>
-        <div class="flex flex-row justify-between items-baseline mb-24">
-            <h1 class="float-left text-4xl">Notas almacenadas en tu equipo</h1>
+        <div class="flex flex-row justify-end items-baselinem mt-5">
             <button @click="createNote()" title="Crear nueva nota">
-                <PlusCircleIcon class="size-5 mx-1 inline-block rounded animate-pulse hover:animate-none text-slate-50 hover:text-slate-400 transition-all"/>
+                <PlusCircleIcon class="size-5 mx-1  rounded animate-pulse hover:animate-none text-slate-50 hover:text-slate-400 transition-all"/>
             </button>
         </div>
         <div v-if="notes.length == 0">
             <p class="text-slate-400 text-lg">Wooow cuanto vacío...🍃</p>
         </div>
-        <div v-else  class="my-4 px-2 py-10 w-full max-h-90 overflow-scroll overflow-x-hidden bg-slate-900 rounded-2xl shadow-inner shadow-slate-950">
+        <div v-else  class="my-4 px-2 py-10 w-full max-h-100 min-h-90 overflow-scroll overflow-x-hidden bg-slate-900 rounded-2xl shadow-inner shadow-slate-950">
             <table class="w-full table table-auto tabl" >
                 <thead>
                     <tr>
