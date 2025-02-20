@@ -1,5 +1,6 @@
 import { neon } from '@neondatabase/serverless';
 import {router} from '../../router'
+import { globalState } from '../../store/store';
 export default class Notes {
 
   constructor() {
@@ -9,7 +10,13 @@ export default class Notes {
 
   async loadAllNotes() {
     try {
-      const result = await this.sql(`select id,title,hold,TO_CHAR(updated_at, 'YYYY/MM/DD HH:mm:ss') AS updated_at from notes order by hold DESC, updated_at DESC;`);
+      const user = JSON.parse(globalState().getUserLogin);
+      const result = await this.sql(`
+        select notes.id,notes.title,notes.hold,TO_CHAR(notes.updated_at, 'YYYY/MM/DD HH:mm:ss') AS updated_at 
+          from public.users_notes
+          inner join public.notes notes on users_notes.note_id = notes.id
+          where public.users_notes.user_id = $1
+         order by notes.hold DESC, notes.updated_at DESC;`,[user.id]);
       return result;
     } catch (err) {
       console.log(err);
@@ -19,7 +26,7 @@ export default class Notes {
 
   async findNoteById(id) {
     try {
-      const result = await this.sql(`select * from notes where id = $1;`, [id]);
+      const result = await this.sql(`select * from public.notes where id = $1;`, [id]);
       return result[0];
     } catch (err) {
       console.log(err);
@@ -29,8 +36,11 @@ export default class Notes {
 
   async saveNewNote(name, time) {
     try {
-      const result = await this.sql('INSERT INTO notes (title,updated_at) values ($1,$2) RETURNING *', [name, time]);
-      return result[0];
+      const userId = JSON.parse(globalState().getUserLogin).id;
+      const resultNote = await this.sql('INSERT INTO notes (title,updated_at) values ($1,$2) RETURNING *', [name, time]);
+      console.log(resultNote[0])
+      await this.sql('INSERT INTO users_notes (user_id,note_id) values ($1,$2) RETURNING *', [userId, resultNote[0].id]);
+      return resultNote[0];
     } catch (err) {
       console.log(err);
       router.push('/404');

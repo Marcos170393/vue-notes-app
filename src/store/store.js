@@ -9,6 +9,7 @@ export const globalState = defineStore('config',{
                 show: false,
             },
             user:{
+                id: '',
                 name: '',
             }
     }),
@@ -17,7 +18,7 @@ export const globalState = defineStore('config',{
             if(state.user.name == ''){
                 return localStorage.getItem('user');
             }
-            return state.user.name;
+            return state.user;
         },
         getToastMessageContent(state){
             return state.toastMessage;
@@ -25,10 +26,12 @@ export const globalState = defineStore('config',{
     },
     actions: {
         setUserLogin(user,remind){
+            const {password} = user;
             if(remind){
-                localStorage.setItem('user',user);
+                localStorage.setItem('user',JSON.stringify(user));
             }
-            this.user.name = user;
+            this.user.id = user.id;
+            this.user.name = user.username;
         },
         showMessage(message,type){
             this.toastMessage.text = message;

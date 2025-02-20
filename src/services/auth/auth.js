@@ -16,7 +16,7 @@ export default class Auth {
         return false;
       }
       globalState().showMessage(`Hi ${result[0].username} !!`,'create');
-      globalState().setUserLogin(result[0].username,remaind);
+      globalState().setUserLogin(result[0],remaind);
       router.push('/');
     }catch(err){
       console.log(`Error during login: ${err.message}`);
