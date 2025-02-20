@@ -87,7 +87,12 @@ export default class Notes {
 
   async deleteNoteById(id) {
     try {
-      await this.sql(`DELETE FROM notes where id = $1 `, [id]);
+      await this.sql(`
+        WITH deleted_notes AS (
+          DELETE FROM notes WHERE id = $1 RETURNING id
+        )
+        DELETE FROM users_notes WHERE note_id IN (SELECT id FROM deleted_notes);
+      `, [id]);
 
       return {
         status: 200,
