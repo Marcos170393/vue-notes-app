@@ -7,6 +7,7 @@ import SetupView from "./components/SetupView.vue";
 import { globalState } from "./store/store";
 import LoginView from "./auth/LoginView.vue";
 import SignUpView from "./auth/SignUpView.vue";
+import ErrorComponent from "./components/shared/ErrorComponent.vue";
 
 const routes = [
     {
@@ -44,6 +45,15 @@ const routes = [
         path: '/about',
         name:'about',
         component: AboutView
+    },
+    {
+        path: '/404',
+        name:'404',
+        component: ErrorComponent
+    },
+    {
+        path: '/:catchAll(.*)',
+        redirect: '/'
     }
 
 ]
