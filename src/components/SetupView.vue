@@ -3,19 +3,26 @@
   <div>
     <div class="p-5">
 
-      <div class="flex flex-row items-center ">
-         <button @click="setLocationAction()">
+      <div>
+        <h2 class="text-2xl mb-5">My account</h2>
+        <div>
+          <button @click="logout()">
             <span class="hover:text-sky-500 cursor-pointer">
-               <FolderIcon class="inline-block size-3 mr-1"/>Log Out
+                <ArrowLeftEndOnRectangleIcon class="inline-block size-5 mr-1"/>Log Out
             </span>
-         </button>
-         <div class="flex">
-            <p class="mx-2">></p><span></span> 
-         </div>
+          </button>
+        </div>
       </div>
     </div>
   </div>
 </template>
 <script setup>
 import HeaderComponent from './shared/HeaderComponent.vue';
+import { ArrowLeftEndOnRectangleIcon } from '@heroicons/vue/16/solid';
+import Auth from '../services/auth/auth';
+const auth= new Auth();
+function logout(){
+  auth.logout();
+}
 </script>
+

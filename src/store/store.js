@@ -16,7 +16,7 @@ export const globalState = defineStore('config',{
     getters: {
         getUserLogin(state){
             if(state.user.name == ''){
-                return localStorage.getItem('user');
+                return JSON.parse(localStorage.getItem('user'));
             }
             return state.user;
         },
@@ -26,9 +26,9 @@ export const globalState = defineStore('config',{
     },
     actions: {
         setUserLogin(user,remind){
-            const {password} = user;
+            const {password,...userData} = user;
             if(remind){
-                localStorage.setItem('user',JSON.stringify(user));
+                localStorage.setItem('user',JSON.stringify(userData));
             }
             this.user.id = user.id;
             this.user.name = user.username;
@@ -43,6 +43,11 @@ export const globalState = defineStore('config',{
                 this.toastMessage.show = false;
             },3000)
             
+        },
+        logOut(){
+            this.user.id = '';
+            this.user.name = '';
+            localStorage.removeItem('user');
         }
     }
 })

@@ -40,4 +40,9 @@ export default class Auth {
       }
     }
   }
+
+  async logout(){
+    globalState().logOut();
+    router.push('/login');
+  }
 }
