@@ -7,7 +7,7 @@
         <div class="flex flex-row justify-end items-baselinem mt-5">
         </div>
         <div class="flex flex-row justify-end my-3">
-            <p>Total: {{ notes.length }}</p>
+            <p> <span class="border-b border-slate-700 rounded-md px-2">Total: {{ notes.length }}</span></p>
             <span class="mx-2"></span>
             <button @click="createNote()" title="Crear nueva nota">
                 <PlusCircleIcon class="size-5 mx-1  rounded animate-pulse hover:animate-none text-slate-50 hover:text-slate-400 transition-all"/>
@@ -33,8 +33,8 @@
                             <img v-else @click="updateHoldNote(note.id, !note.hold)"  src="../../resources/pin-unselected.svg" class="size-5 cursor-pointer opacity-0 hover:opacity-80 transition-opacity" alt="" title="Fijar">
 
                         </td>
-                        <td class="w-8/12">
-                            <button @click="openNote(note.id)" class="text-slate-500 font-semibold hover:text-slate-200 cursor-pointer">{{ note.title }}</button>
+                        <td class="w-8/12 cursor-pointer" @click="openNote(note.id)" >
+                            <p class="text-slate-500 font-semibold hover:text-slate-200">{{ note.title }}</p>
                         </td>
                         <td>
                             <p class="text-slate-600 mr-2">{{note.updated_at}}</p>

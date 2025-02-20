@@ -1,7 +1,7 @@
 <template>
-    <div class="h-full relative">
-        <div class="border-b pb-5 mb-5 border-slate-500">
-            <div class="flex align-baseline">
+        <div class="h-full relative w-full">
+            <div class="border-b pb-5 mb-5 border-slate-500">
+                <div class="flex align-baseline">
                 <h1 class="text-3xl"> {{fileName}}</h1>
                 <button class="text-slate-500 hover:text-slate-200 cursor-pointer inline-block ml-4" @click="saveNote()">
                     <CheckCircleIcon class="size-6 "/>
@@ -9,14 +9,13 @@
             </div>
             <p><ClockIcon class="inline-block size-4" /> <small class="underline text-blue-600">{{lastUpdate}}</small></p>
         </div>
-        <div id="editor"></div>
-       
+        <div id="editor" class="m-10"></div>
     </div>
 </template>
 <script setup>
     import { onMounted, ref } from 'vue';
     import EditorJS from '@editorjs/editorjs';
-    import { CheckCircleIcon, PencilSquareIcon, ClockIcon } from '@heroicons/vue/16/solid';
+    import { CheckCircleIcon, ClockIcon } from '@heroicons/vue/16/solid';
     import { findNotesAction, updateNoteAction } from '../../utils/files-actions';
 
     const props = defineProps({
@@ -36,7 +35,7 @@
             data: content,
             autofocus: true,
             hideToolbar: false,
-            placeholder:'Que estas pensando?',
+            placeholder:'What do you have in mind? ☕',
         });
     })
 
@@ -55,3 +54,9 @@
     }
 
 </script>
+<style>
+    .ce-block__content,
+    .ce-toolbar__content {
+        max-width: unset;
+    }
+</style>
