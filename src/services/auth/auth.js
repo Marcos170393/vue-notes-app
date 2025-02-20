@@ -8,7 +8,7 @@ export default class Auth {
   }
 
 
-  async login(username,pass) {
+  async login(username,pass,remaind) {
     try{
       const result = await this.sql(`select * from users where username = $1 and password = $2;`, [username,pass]);
       if(result[0] == undefined){
@@ -16,7 +16,7 @@ export default class Auth {
         return false;
       }
       globalState().showMessage(`Hi ${result[0].username} !!`,'create');
-      localStorage.setItem('username',result[0].username);
+      globalState().setUserLogin(result[0].username,remaind);
       router.push('/');
     }catch(err){
       console.log(`Error during login: ${err.message}`);

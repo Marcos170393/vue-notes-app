@@ -14,15 +14,21 @@ export const globalState = defineStore('config',{
     }),
     getters: {
         getUserLogin(state){
-            return state.user;
+            if(state.user.name == ''){
+                return localStorage.getItem('user');
+            }
+            return state.user.name;
         },
         getToastMessageContent(state){
             return state.toastMessage;
         }
     },
     actions: {
-        setUserLogin(user){
-            this.user.name = user.name;
+        setUserLogin(user,remind){
+            if(remind){
+                localStorage.setItem('user',user);
+            }
+            this.user.name = user;
         },
         showMessage(message,type){
             this.toastMessage.text = message;

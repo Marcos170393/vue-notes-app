@@ -1,7 +1,12 @@
 <template>
   <div class="min-h-screen flex flex-col items-center justify-center bg-gray-900">
     <div class="w-full max-w-md p-12 bg-gray-800 rounded-lg shadow-lg">
-      <h1 class="text-3xl font-bold text-center text-white">Sign Up</h1>
+      <div class="">
+        <button @click="back" class="cursor-pointer">
+          <ArrowLeftCircleIcon class="size-5 self-center hover:-translate-x-1 transition-transform"/>
+        </button>
+        <h1 class="text-3xl text-center font-bold text-white">Sign Up</h1>
+      </div>
       <form @submit.prevent="onSubmit" class="mt-8 space-y-6">
         <div class="rounded-md shadow-sm">
           <div>
@@ -46,7 +51,7 @@
         <div>
           <button
             type="submit"
-            class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            class="group relative w-full flex justify-center py-2 px-4 cursor-pointer border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
             <span class="absolute left-0 inset-y-0 flex items-center pl-3">
               <svg
@@ -63,7 +68,7 @@
                 />
               </svg>
             </span>
-            Sign Up
+            Confirm
           </button>
         </div>
       </form>
@@ -73,9 +78,10 @@
 
 <script setup>
 import { ref, reactive } from "vue";
+import { useRouter } from "vue-router";
 import Auth from "../services/auth/auth";
 import { globalState } from "../store/store";
-import { useRouter } from "vue-router";
+import { ArrowLeftCircleIcon } from "@heroicons/vue/16/solid";
 
 const router = useRouter();
 
@@ -93,7 +99,7 @@ const confirmPassword = ref("");
 const onSubmit = async (e) => {
   if (password.value != confirmPassword.value) {
     data.password.error = true;
-    data.password.message = "Las contrasenas no coinciden";
+    data.password.message = "⚠️ Passwords does not match";
     return false;
   }
   const response = await auth.signUp(username.value, password.value);
@@ -103,4 +109,8 @@ const onSubmit = async (e) => {
   globalState().showMessage('Usuario creado con exito','create');
   router.push('/login');
 };
+
+function back(){
+  router.push('/login');
+}
 </script>
