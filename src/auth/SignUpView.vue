@@ -1,10 +1,16 @@
 <template>
+  <div class="absolute m-4 align-middle">
+    <LogoViewComponent class="opacity-50 m-5 size-15 inline-block"/>
+  </div>
+  <div class="absolute top-0 right-0 m-4">
+    <RouterLink to="/login"
+      class="group relative m-5 flex justify-center py-2 px-4 text-sm font-medium rounded-md text-white hover:text-cyan-400 focus:outline-none hover:ring-2 hover:ring-blue-400 transition-colors">
+      Log in
+    </RouterLink>
+  </div>
   <div class="min-h-screen flex flex-col items-center justify-center bg-gray-900">
     <div class="w-full max-w-md p-12 bg-gray-800 rounded-lg shadow-lg">
       <div class="">
-        <button @click="back" class="cursor-pointer">
-          <ArrowLeftCircleIcon class="size-5 self-center hover:-translate-x-1 transition-transform"/>
-        </button>
         <h1 class="text-3xl text-center font-bold text-white">Sign Up</h1>
       </div>
       <form @submit.prevent="onSubmit" class="mt-8 space-y-6">
@@ -82,7 +88,7 @@ import { useRouter } from "vue-router";
 import Auth from "../services/auth/auth";
 import { globalState } from "../store/store";
 import { ArrowLeftCircleIcon } from "@heroicons/vue/16/solid";
-
+import LogoViewComponent from '../components/shared/LogoViewComponent.vue';
 const router = useRouter();
 
 const data = reactive({
