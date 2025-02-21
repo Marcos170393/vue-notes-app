@@ -35,7 +35,7 @@
             data: content,
             autofocus: true,
             hideToolbar: false,
-            placeholder:'What do you have in mind? ☕',
+            placeholder:'What are you thinking? ☕',
         });
     })
 

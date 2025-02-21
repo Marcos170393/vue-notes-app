@@ -1,10 +1,7 @@
 <template>
-        <div id="toast" class="absolute z-10 flex justify-center rounded-md items-center  py-2 slate-600 opacity-0 min-w-60 max-w-100 h-11 right-4 -translate-y-4 duration-150"
+        <div id="toast" class="absolute z-10 flex justify-center rounded-md items-center bg-slate-800 py-2 slate-600 opacity-0 min-w-60 max-w-100 h-11 right-4 -translate-y-4 duration-150"
             :class="{
-                'transition-all translate-y-4 duration-150 opacity-90 shadow-lg border-slate-500': data.showMessage,
-                ' shadow-purple-950': data.type == 'success',
-                ' shadow-red-900': data.type == 'danger',
-            }"
+                'transition-all translate-y-4 duration-150 opacity-100 shadow-lg border-slate-500 shadow-slate-950 ': data.showMessage            }"
         >
         <div>
 

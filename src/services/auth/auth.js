@@ -12,10 +12,10 @@ export default class Auth {
     try{
       const result = await this.sql(`select * from users where username = $1 and password = $2;`, [username,pass]);
       if(result[0] == undefined){
-        globalState().showMessage('Username or Password incorrect','error');
+        globalState().showMessage('Username or Password incorrect','danger');
         return false;
       }
-      globalState().showMessage(`Hi ${result[0].username} !!`,'create');
+      globalState().showMessage(`Welcome back ${result[0].username} !!`,'success');
       globalState().setUserLogin(result[0],remaind);
       router.push('/');
     }catch(err){

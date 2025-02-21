@@ -33,7 +33,7 @@
                     <tr v-for="(note,index) in notes" :key="note.title" class="hover:bg-slate-900 ">
                         <td>
                             <img v-if="note.hold == 1"  @click="updateHoldNote(note.id, !note.hold)" src="../../resources/pin-selected.svg" class="size-6 cursor-pointer" alt="" title="Unhold">
-                            <img v-else @click="updateHoldNote(note.id, !note.hold)"  src="../../resources/pin-unselected.svg" class="size-5 cursor-pointer opacity-0 hover:opacity-80 transition-opacity" alt="" title="Hold">
+                            <img v-else @click="updateHoldNote(note.id, !note.hold)"  src="../../resources/pin-unselected.svg" class="size-5 cursor-pointer opacity-20 hover:opacity-80 transition-opacity" alt="" title="Hold">
 
                         </td>
                         <td class="w-8/12 cursor-pointer" @click="openNote(note.id)" >
