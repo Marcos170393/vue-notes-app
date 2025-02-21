@@ -5,12 +5,12 @@
       <img src="../resources/settings.png" alt="">
   </div>
     <div class="p-10">
-
+      <ConfirmLogOutDialogComponent @hidde="toggleDialog(false)"  :show="localState.showDialog"/>
       <div>
         <h2 class="text-2xl mb-5">My account</h2>
         <div class="w-2/5 my-4 h-0.5 bg-gradient-to-r from-slate-600 to-slate-900 rounded-full"></div>
         <div>
-          <button @click="logout()">
+          <button @click="toggleDialog(true)">
             <span class="hover:text-sky-500 cursor-pointer">
                 <ArrowLeftEndOnRectangleIcon class="inline-block size-5 mr-1"/>Log Out
             </span>
@@ -21,21 +21,25 @@
 </template>
 <script setup>
 import HeaderComponent from './shared/HeaderComponent.vue';
+import ConfirmLogOutDialogComponent from './shared/ConfirmLogOutDialogComponent.vue';
 import { ArrowLeftEndOnRectangleIcon } from '@heroicons/vue/16/solid';
-import Auth from '../services/auth/auth';
+
 import { onMounted, reactive } from 'vue';
-const auth= new Auth();
-function logout(){
-  auth.logout();
-}
+
+
 
 const localState = reactive({
   showLogo: true,
+  showDialog: false
 });
 
 onMounted(async ()=>{
         showlogo();
   })
+
+function toggleDialog(state){
+    localState.showDialog = state;
+}
 async function showlogo(){
         setTimeout(()=>{
             localState.showLogo = false;
