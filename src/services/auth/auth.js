@@ -54,4 +54,11 @@ export default class Auth {
     globalState().logOut();
     router.push('/login');
   }
+
+  async deleteAccount(){
+    await this.sql(`delete from users_notes where user_id = $1;`, [globalState().getUserLogin.id]);
+    await this.sql(`delete from users where id = $1;`, [globalState().getUserLogin.id]);
+    globalState().logOut();
+    router.push('/login');
+  }
 }
