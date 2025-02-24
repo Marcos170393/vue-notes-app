@@ -1,15 +1,14 @@
 <template>
-  <div class="min-h-screen flex flex-col bg-gray-900">
-    <div class="m-4 align-middle">
-      <LogoViewComponent class="opacity-50 m-5 size-15 inline-block"/>
-    </div>
-    <div class="absolute top-0 right-0 m-4">
-      <RouterLink to="/signup"
-        class="group relative m-5 flex justify-center py-2 px-4 text-sm font-medium rounded-md text-white hover:text-cyan-400 focus:outline-none hover:ring-2 hover:ring-blue-400 transition-colors">
-        Sign Up
-      </RouterLink>
-    </div>
-    <div class="min-h-screen flex flex-col items-center bg-gray-900">
+    <div class="absolute align-middle">
+    <LogoViewComponent class="opacity-50 m-5 size-15 inline-block"/>
+  </div>
+  <div class="absolute top-0 right-0 m-4">
+    <RouterLink to="/signup"
+      class="group relative m-5 flex justify-center py-2 px-4 text-sm font-medium rounded-md text-white hover:text-cyan-400 focus:outline-none hover:ring-2 hover:ring-blue-400 transition-colors">
+      Sign Up
+    </RouterLink>
+  </div>
+    <div class="min-h-screen flex flex-col items-center justify-center bg-gray-900">
       <div class="w-full max-w-md p-12 bg-gray-800 rounded-lg shadow-lg">
         <h1 class="text-3xl font-bold text-center text-white">Login</h1>
         <form @submit.prevent="login" class="mt-8 space-y-6">
@@ -58,7 +57,6 @@
         </form>
       </div>
     </div>
-  </div>
 </template>
 
 <script setup>

@@ -1,5 +1,5 @@
 <template>
-  <div class="absolute m-4 align-middle">
+  <div class="absolute align-middle">
     <LogoViewComponent class="opacity-50 m-5 size-15 inline-block"/>
   </div>
   <div class="absolute top-0 right-0 m-4">
