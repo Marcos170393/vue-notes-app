@@ -110,9 +110,9 @@ const onSubmit = async (e) => {
   }
   const response = await auth.signUp(username.value, password.value);
   if (response.error) {
-    globalState().showMessage('Error al guardar datos','error');
+    globalState().showMessage('Error creating user','error');
   }
-  globalState().showMessage('Usuario creado con exito','create');
+  globalState().showMessage('Account created successfully','create');
   router.push('/login');
 };
 
