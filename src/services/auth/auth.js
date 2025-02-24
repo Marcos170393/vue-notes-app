@@ -1,6 +1,7 @@
 import { neon } from '@neondatabase/serverless';
 import { globalState } from '../../store/store';
 import { router } from '../../router';
+import bcrypt from 'bcryptjs';
 export default class Auth {
 
   constructor() {
@@ -10,11 +11,15 @@ export default class Auth {
 
   async login(username,pass,remaind) {
     try{
-      const result = await this.sql(`select * from users where username = $1 and password = $2;`, [username,pass]);
-      if(result[0] == undefined){
+      const result = await this.sql(`select * from users where username = $1;`, [username]);
+      if(result.length == 0){
         globalState().showMessage('Username or Password incorrect','danger');
         return false;
       }
+      const res = await bcrypt.compare(pass,result[0].password);
+      if(!res){
+      }
+
       globalState().showMessage(`Welcome back ${result[0].username} !!`,'success');
       globalState().setUserLogin(result[0],remaind);
       router.push('/');
@@ -29,7 +34,9 @@ export default class Auth {
   }
   async signUp(username,pass) {
     try{
-      const result = await this.sql(`insert into users (username,password) values ($1,$2);`, [username,pass]);
+      const salt = await bcrypt.genSalt();
+      const hashPass = await bcrypt.hash(pass,salt);
+      const result = await this.sql(`insert into users (username,password) values ($1,$2);`, [username,hashPass]);
       return result;
     }catch(err){
       console.log(`Error during signUp: ${err}`);
