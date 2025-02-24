@@ -18,6 +18,8 @@ export default class Auth {
       }
       const res = await bcrypt.compare(pass,result[0].password);
       if(!res){
+        globalState().showMessage('Username or Password incorrect','danger');
+        return false;
       }
 
       globalState().showMessage(`Welcome back ${result[0].username} !!`,'success');
