@@ -25,7 +25,7 @@
             </button>
         </div>
         <div  class="my-4 px-2 py-10 w-full max-h-100 min-h-90 overflow-scroll overflow-x-hidden">
-            <table class="w-full table table-auto tabl" >
+            <table v-if="!localState.isLoading" class="w-full table table-auto" >
                 <thead>
                     <tr>
                         <th></th>
@@ -58,6 +58,7 @@
                     </tr>
                 </tbody>
             </table>
+            <TableSkeletonComponent :rows="10" :show="localState.isLoading || filteredNotes.length == 0"/>
         </div>
 
     </div>
@@ -73,6 +74,7 @@
     import InputDialogComponent from '../shared/InputDialogComponent.vue';
     import InputDialogRenameComponent from '../shared/InputDialogRenameComponent.vue';
     import HeaderComponent from '../shared/HeaderComponent.vue';
+    import TableSkeletonComponent from '../shared/TableSkeletonComponent.vue';
     const emit = defineEmits();
 
      const localState = reactive({
@@ -86,7 +88,9 @@
             showDialog: false,
             name: null,
             id: null,
-        }
+        },
+        isLoading: false,
+
     });
 
     const props = defineProps({
@@ -114,7 +118,9 @@
     })
 
     async function getAllNotes(){
+        localState.isLoading = true;
         const notesData = await loadNotesAction();
+        localState.isLoading = false;
         notes.value = notesData;
     };
 
