@@ -12,18 +12,16 @@
             </template>
         </nav>
         <div id="navSocialMediaLinks" class="absolute bottom-0 right-1/2 w-auto">
-            <button class="mx-1 hover:-translate-y-0.5 transition-transform" @click="sendGitHubBrowser()">
+            <a href="https://github.com/Marcos170393/vue-notes-app" target="_blank" class="inline-block mx-1 hover:-translate-y-0.5 transition-transform" >
                 <img src="../../resources/github-142-svgrepo-com.svg" alt="">
-            </button>
-            <button class="mx-1 hover:-translate-y-0.5 transition-transform" @click="sendLinkdeInBrowser()">
+            </a>
+            <a href="https://www.linkedin.com/in/marcos-correa-larrosa/" target="_blank" class="inline-block mx-1 hover:-translate-y-0.5 transition-transform" @click="sendLinkdeInBrowser()">
                 <img src="../../resources/linkedin-round-svgrepo-com.svg" alt="">
-            </button>
+            </a>
         </div>
       </div>
 </template>
 <script setup>
     import NavButtonComponent from './NavButtonComponent.vue';
     import { links } from '../../config/nav-links';
-    import { sendGitHubBrowser,sendLinkdeInBrowser } from '../../utils/open-link';
-
 </script>
