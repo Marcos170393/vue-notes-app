@@ -32,9 +32,7 @@ export const createNoteAction = async (name) => {
 
 export const updateNoteAction = async(id,data) => {
     const response = await editNote(id,data);
-    if(response.status == 200){
-        globalState().showMessage('Ready!','success');
-    }else{
+    if(response.status != 200){
         globalState().showMessage('mmm.. something went wrong...','danger');
     };
     return response;
