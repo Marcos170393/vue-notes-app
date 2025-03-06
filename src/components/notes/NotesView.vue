@@ -16,7 +16,7 @@
                 <span class="inline-block">
                     <MagnifyingGlassIcon class="size-5 mx-1 rounded text-slate-400 transition-colors" :class="{'text-white transition-colors': filter.length > 0}"/>
                 </span>
-                <input @keyup="filterNotes()" type="text" class=" px-2" v-model="filter" placeholder="search">
+                <input @keyup="filterNotes()" type="text" class="focus:outline-none px-2" v-model="filter" placeholder="search">
             </div>
             <p> <span class="border-b border-slate-700 rounded-md px-2">Total: {{ notes.length }}</span></p>
             <span class="mx-2"></span>
