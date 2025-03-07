@@ -15,7 +15,8 @@
     import Title from "title-editorjs";
     import EditorjsList from '@editorjs/list';
     import CodeTool from '@editorjs/code';
-    import { CheckCircleIcon, ClockIcon } from '@heroicons/vue/16/solid';
+    import InlineCode  from '@editorjs/inline-code';
+    import { ClockIcon } from '@heroicons/vue/16/solid';
     import { findNotesAction, updateNoteAction } from '../../utils/files-actions';
 
     const props = defineProps({
@@ -52,16 +53,21 @@
                 },
                 code: {
                     class: CodeTool,
-                    shortcut: 'CMD+SHIFT+C',
                     config: {
                         defaultLanguage: 'plaintext'
 
                     }
                 },
+                InlineCode: {
+                    class: InlineCode,
+                    shortcut: 'CMD+SHIFT+C'
+                }
                 
             },
             onChange: async () => {
-                await saveNote();
+                setTimeout(async()=>{
+                    await saveNote();
+                },500);
             }
         });
     })
