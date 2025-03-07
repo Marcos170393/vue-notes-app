@@ -13,6 +13,7 @@
     import { onMounted, ref } from 'vue';
     import EditorJS from '@editorjs/editorjs';
     import Title from "title-editorjs";
+    import EditorjsList from '@editorjs/list';
     import { CheckCircleIcon, ClockIcon } from '@heroicons/vue/16/solid';
     import { findNotesAction, updateNoteAction } from '../../utils/files-actions';
 
@@ -40,7 +41,13 @@
                     shortcut: 'CMD+SHIFT+T',
                     inlineToolbar: true
                 },
-
+                list:{
+                    class: EditorjsList,
+                    inlineToolbar: true,
+                    config: {
+                        defaultStyle: 'unordered'
+                    }
+                }
             },
             onChange: async () => {
                 await saveNote();
