@@ -14,6 +14,7 @@
     import EditorJS from '@editorjs/editorjs';
     import Title from "title-editorjs";
     import EditorjsList from '@editorjs/list';
+    import CodeTool from '@editorjs/code';
     import { CheckCircleIcon, ClockIcon } from '@heroicons/vue/16/solid';
     import { findNotesAction, updateNoteAction } from '../../utils/files-actions';
 
@@ -44,10 +45,20 @@
                 list:{
                     class: EditorjsList,
                     inlineToolbar: true,
+                    shortcut: 'CMD+SHIFT+L',
                     config: {
                         defaultStyle: 'unordered'
                     }
-                }
+                },
+                code: {
+                    class: CodeTool,
+                    shortcut: 'CMD+SHIFT+C',
+                    config: {
+                        defaultLanguage: 'plaintext'
+
+                    }
+                },
+                
             },
             onChange: async () => {
                 await saveNote();
