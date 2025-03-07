@@ -26,7 +26,12 @@ export default class Notes {
 
   async findNoteById(id) {
     try {
-      const result = await this.sql(`select * from public.notes where id = $1;`, [id]);
+      const result = await this.sql(`select 
+          notes.id,
+          notes.title,
+          notes.content,
+          TO_CHAR(notes.updated_at, 'YYYY/MM/DD HH:mm:ss') AS updated_at
+        from public.notes notes where id = $1;`, [id]);
       return result[0];
     } catch (err) {
       console.log(err);
