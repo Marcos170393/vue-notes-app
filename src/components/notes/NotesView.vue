@@ -24,7 +24,7 @@
                 <PlusCircleIcon class="size-5 mx-1 cursor-pointer rounded animate-pulse hover:animate-none text-slate-50 hover:text-slate-400 transition-all"/>
             </button>
         </div>
-        <div  class="my-4 px-2 py-10 w-full min-w-full max-h-100 min-h-90 overflow-scroll">
+        <div  class="my-4 px-2 py-10 w-full min-w-full max-h-100 min-h-90 overflow-scroll overflow-x-hidden">
             <table v-if="!localState.isLoading" class="w-full table table-auto" >
                 <thead>
                     <tr>
@@ -41,8 +41,8 @@
                             <img v-else @click="updateHoldNote(note.id, !note.hold)"  src="../../resources/pin-unselected.svg" class="size-5 cursor-pointer opacity-20 hover:opacity-80 transition-opacity" alt="" title="Hold">
 
                         </td>
-                        <td class="w-8/12 cursor-pointer" @click="openNote(note.id)" >
-                            <p class="text-slate-500 font-semibold hover:text-slate-200">{{ note.title }}</p>
+                        <td class="md:w-7/12">
+                            <p class="text-slate-500 font-semibold hover:text-slate-200 cursor-pointer" @click="openNote(note.id)">{{ note.title }}</p>
                         </td>
                         <td>
                             <p class="hidden sm:block text-slate-600 mr-2">{{note.updated_at}}</p>

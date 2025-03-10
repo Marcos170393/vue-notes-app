@@ -1,5 +1,5 @@
 <template>
-    <div class="col-span-2 w-5/5 flex flex-col shadow-md shadow-slate-800 hidden md:block relative">
+    <div class="col-span-2 w-5/5 min-w-48 flex flex-col shadow-md shadow-slate-800 hidden xl:block relative">
         <div class="flex flex-row mb-6 items-end border-b rounded-md border-slate-800 shadow-lg p-4 shadow-slate-600 mx-auto">
             <h5 class="font-sans text-xl antialiased font-semibold text-blue-gray-900">
                 <img src="../../resources/logo.png" class="size-7 inline-block " alt="">
@@ -20,7 +20,7 @@
             </a>
         </div>
       </div>
-    <button v-if="!localstate.showNav" @click="toggleMenu()" @mouseover="animateMenu()" class="absolute z-10 top-0 right-0 m-4 block md:hidden animate-pulse" >
+    <button v-if="!localstate.showNav" @click="toggleMenu()" @mouseover="animateMenu()" class="absolute z-10 top-0 right-0 m-4 block xl:hidden animate-pulse" >
         <img src="../../resources/logo.png" class="size-7 inline-block" alt="">
     </button>
     <div class="absolute -translate-y-100 right-0 bg-slate-700 shad w-50 z-20 max-h-200 text-center rounded-md duration-300" 

@@ -3,7 +3,7 @@
     <ToastMessageCompontent/>
     <template v-if="!$route.path.includes('login') && !$route.path.includes('signup') && !$route.path.includes('404')">
       <NavComponent/>
-      <main class="col-span-12 md:col-span-10 p-4">
+      <main class="col-span-12 xl:col-span-10 p-4">
         <router-view v-slot="{ Component }">
           <transition name="fade">
             <component :is="Component" />
