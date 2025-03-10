@@ -1,9 +1,9 @@
 <template>
-  <div class="grid grid-cols-12 h-svh text-gray-300 font-sans font-thin relative">
+  <div class="grid grid-cols-12 h-svh text-gray-300 font-sans font-thin relative min-w-100">
     <ToastMessageCompontent/>
     <template v-if="!$route.path.includes('login') && !$route.path.includes('signup') && !$route.path.includes('404')">
       <NavComponent/>
-      <main class="col-span-10 p-4">
+      <main class="col-span-12 md:col-span-10 p-4">
         <router-view v-slot="{ Component }">
           <transition name="fade">
             <component :is="Component" />

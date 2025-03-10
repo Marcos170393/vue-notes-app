@@ -24,7 +24,7 @@
                 <PlusCircleIcon class="size-5 mx-1 cursor-pointer rounded animate-pulse hover:animate-none text-slate-50 hover:text-slate-400 transition-all"/>
             </button>
         </div>
-        <div  class="my-4 px-2 py-10 w-full max-h-100 min-h-90 overflow-scroll overflow-x-hidden">
+        <div  class="my-4 px-2 py-10 w-full min-w-full max-h-100 min-h-90 overflow-scroll">
             <table v-if="!localState.isLoading" class="w-full table table-auto" >
                 <thead>
                     <tr>
@@ -45,7 +45,7 @@
                             <p class="text-slate-500 font-semibold hover:text-slate-200">{{ note.title }}</p>
                         </td>
                         <td>
-                            <p class="text-slate-600 mr-2">{{note.updated_at}}</p>
+                            <p class="hidden sm:block text-slate-600 mr-2">{{note.updated_at}}</p>
                         </td>
                         <td>
                             <DropDownComponent 
