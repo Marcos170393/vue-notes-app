@@ -28,7 +28,7 @@
         <button class="absolute top-1 right-1 cursor-pointer" @click="toggleMenu()" >
             <XCircleIcon class="size-4"/>
         </button>
-        <nav class="flex flex-col text-left">
+        <nav class="flex flex-col text-left p-4">
             <template v-for="link in links">
                 <NavButtonComponent :route=link />
             </template>
