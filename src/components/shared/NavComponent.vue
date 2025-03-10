@@ -1,17 +1,17 @@
 <template>
-    <div class="col-span-2 h-full w-5/5 flex flex-col shadow-md shadow-slate-800 hidden md:block">
+    <div class="col-span-2 w-5/5 flex flex-col shadow-md shadow-slate-800 hidden md:block relative">
         <div class="flex flex-row mb-6 items-end border-b rounded-md border-slate-800 shadow-lg p-4 shadow-slate-600 mx-auto">
             <h5 class="font-sans text-xl antialiased font-semibold text-blue-gray-900">
                 <img src="../../resources/logo.png" class="size-7 inline-block " alt="">
                 MemoWave
             </h5>
         </div>
-        <nav class="flex flex-col ">
+        <nav class="flex flex-col h-96 px-10">
             <template v-for="link in links">
                 <NavButtonComponent :route=link />
             </template>
         </nav>
-        <div id="navSocialMediaLinks" class=" bottom-0 w-auto">
+        <div id="navSocialMediaLinks" class="absolute text-center w-full bottom-4">
             <a href="https://github.com/Marcos170393/vue-notes-app" target="_blank" class="inline-block mx-1 hover:-translate-y-0.5 transition-transform" >
                 <img src="../../resources/github-142-svgrepo-com.svg" alt="">
             </a>
